@@ -6,7 +6,7 @@
 
   <display-name>Archetype Created Web Application</display-name>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>
 
   <!-- 配置spring -->
@@ -52,6 +52,5 @@
     <!-- 所有的请求都进入springMVC -->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
 
 </web-app>

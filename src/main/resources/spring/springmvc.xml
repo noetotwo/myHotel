@@ -38,4 +38,13 @@
 		<property name="defaultEncoding" value="utf-8"/>
 	</bean>
 
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 配置拦截器作用的路径 -->
+			<mvc:mapping path="/**" />
+			<bean class="com.mySSM.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

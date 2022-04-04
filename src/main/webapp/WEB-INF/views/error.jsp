@@ -25,7 +25,7 @@
     <div class="panel-body">
         <h1>:(</h1><h4 class="success">账号或密码错误，请重新登陆！</h4>                <h4 class="detail"></h4>
         <h4 >
-            请返回 <a id="href" onclick="shut()">登陆</a>
+            请返回 <a id="href" href="${pageContext.request.contextPath}/xian/Login" onclick="shut()">登陆</a>
         </h4>
         <p class="text-right">--贤哲国际后台管理系统--</p>
         <p class="text-right">联系电话：178********</p>

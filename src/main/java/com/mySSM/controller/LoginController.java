@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,10 +32,12 @@ public class LoginController {
      */
     @RequestMapping(value = "/Login" ,method = RequestMethod.POST ,consumes="application/json")
     @ResponseBody
-    public Map Login(@RequestBody User user){
+    public Map Login(@RequestBody User user, HttpSession session){
         Map map = new HashMap();
         if(loginService.Login(user.getName(), user.getPassword())){
             map.put("value","/xian/Home");
+            // 登录成功，将用户信息保存到session对象中
+            session.setAttribute("user", user);
         } else {
             map.put("value","/xian/error");
         }
