@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>606未知登录对接界面</title>
-    <link rel="shortcut icon" href="images/游戏.png" />
+    <%--<link rel="shortcut icon" href="images/游戏.png" />--%>
+    <link rel="shortcut icon"  href="#"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/local/css/login.css">
     <script src="webjars/jquery/3.5.1/jquery.min.js"> </script>
 

@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon"  href="#"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登陆失败</title>
@@ -11,21 +12,13 @@
         .text-right{text-align:right;}
     </style>
 
-    <script type="text/javascript">
-    　　function shut(){
-    　　window.opener=null;
-    　　window.open('','_self');
-    　　window.close();
-    　　}
-    </script>
-
 </head>
 <body id="error-page">
 <div class="row">
     <div class="panel-body">
         <h1>:(</h1><h4 class="success">账号或密码错误，请重新登陆！</h4>                <h4 class="detail"></h4>
         <h4 >
-            请返回 <a id="href" href="${pageContext.request.contextPath}/xian/Login" onclick="shut()">登陆</a>
+            请返回 <a id="href"  methods="post" href="${pageContext.request.contextPath}/" >登陆</a>
         </h4>
         <p class="text-right">--贤哲国际后台管理系统--</p>
         <p class="text-right">联系电话：178********</p>

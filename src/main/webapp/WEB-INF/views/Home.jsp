@@ -3,13 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <link rel="shortcut icon"  href="#"/>
     <title>Home</title>
     <style>
         .body-bg{background-image:url("${pageContext.request.contextPath}/static/local/img/a.png");background-repeat: no-repeat;
             background-position:center center;background-size:100% auto;background-color:#E9E9EB;}
     </style>
 </head >
-<body class = ".body-bg">
+<body class = "body-bg">
 
 </body>
 </html>
