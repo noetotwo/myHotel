@@ -3,7 +3,11 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mySSM.dao.AdminMapper">
-    <select id="SelectAdmin" parameterType="com.mySSM.pojo.User" resultType="com.mySSM.pojo.User">
+    <select id="ComparedAdmin" resultType="com.mySSM.pojo.User">
+        select * from `admin` where adminname = #{name} and `password` = #{password} and `level`  = #{level }
+    </select>
+
+    <select id="SelectAdmin" resultType="com.mySSM.pojo.User">
         select * from `admin`
     </select>
 
@@ -12,7 +16,7 @@
     </update>
 
     <delete id = "DeleteAdmin" parameterType="com.mySSM.pojo.User">
-        delete from `admin` where  adminname = #{name},password = #{password}
+        delete from `admin` where  adminname = #{name}
     </delete>
 
     <insert id="addAdmin" parameterType="com.mySSM.pojo.User">

@@ -12,9 +12,13 @@ public class User {
     /**
      * 用户级别
      */
-    private String level;
+    private int level;
 
     public User() {
+    }
+
+    public User(String name) {
+        this.name = name;
     }
 
     public User(String name, String password) {
@@ -22,7 +26,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String password, String level) {
+    public User(String name, String password, int level) {
         this.name = name;
         this.password = password;
         this.level = level;
@@ -44,11 +48,11 @@ public class User {
         this.password = password;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 

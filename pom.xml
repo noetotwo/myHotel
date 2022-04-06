@@ -27,6 +27,14 @@
       <artifactId>log4j</artifactId>
       <version>${log4j.version}</version>
     </dependency>
+
+    <!-- 单元测试 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
     <!-- spring -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -229,13 +237,6 @@
       <groupId>jdom</groupId>
       <artifactId>jdom</artifactId>
       <version>1.0</version>
-    </dependency>
-
-    <!--jquery依赖-->
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-      <version>3.5.1</version>
     </dependency>
 
     <!--json的使用 不导入会导致springmvc无法解析json数据-->

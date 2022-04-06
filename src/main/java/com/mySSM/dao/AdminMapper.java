@@ -1,18 +1,25 @@
 package com.mySSM.dao;
 
 import com.mySSM.pojo.User;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public interface AdminMapper {
+
+    /**
+     * 查询库中是否有此对象
+     * @param user 要查询的对象
+     * @return 返回查询到的对象
+     */
+    User ComparedAdmin(User user);
 
     /**
      * 更新账号dao
      * @param now 新的对象
      * @return 更新成功返回改变行数
      */
-    int UpdateAdmin(@Param("now") User now);
+    int UpdateAdmin( User now);
 
     /**
      * 增加管理者
@@ -30,8 +37,7 @@ public interface AdminMapper {
 
     /**
      * 查询管理者
-     * @param user 管理对象
      * @return 查询成功返回对象列表
      */
-    List<User> SelectAdmin(User user);
+    List<User> SelectAdmin();
 }

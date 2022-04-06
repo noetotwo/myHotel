@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hotel.dao.SuiteMapper">
+<mapper namespace="com.mySSM.dao.SuiteMapper">
 
     <insert id="addSuite" parameterType="com.mySSM.pojo.Suite">
         insert into home (room_num,S_Type,Price,State,img,introduce)
