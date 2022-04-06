@@ -31,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public boolean addAdmin(User user,User addUser) {
         if(adminMapper.ComparedAdmin(user) != null && user.getLevel() > 4 && user.getLevel() > addUser.getLevel()){
-            if(adminMapper.addAdmin(addUser) > 0){
+            if(adminMapper.ComparedAdmin(addUser) == null && adminMapper.addAdmin(addUser) > 0){
                 return true;
             }
         }

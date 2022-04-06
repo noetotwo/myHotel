@@ -4,7 +4,7 @@ public class Suite {
     /**
      * 房间ID
      */
-    private Integer Id;
+    private int Id;
     /**
      * 房间门牌号
      */
@@ -16,7 +16,7 @@ public class Suite {
     /**
      * 房间价格
      */
-    private String Price;
+    private int Price;
     /**
      * 房间状态
      */
@@ -34,7 +34,16 @@ public class Suite {
     public Suite() {
     }
 
-    public Suite(Integer id, int room_num, String s_Type, String price, String state, String img, String introduce) {
+    public Suite(int room_num, String s_Type, int price, String state, String img, String introduce) {
+        this.room_num = room_num;
+        S_Type = s_Type;
+        Price = price;
+        State = state;
+        Img = img;
+        Introduce = introduce;
+    }
+
+    public Suite(int id, int room_num, String s_Type, int price, String state, String img, String introduce) {
         Id = id;
         this.room_num = room_num;
         S_Type = s_Type;
@@ -44,11 +53,11 @@ public class Suite {
         Introduce = introduce;
     }
 
-    public Integer getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         Id = id;
     }
 
@@ -68,11 +77,11 @@ public class Suite {
         S_Type = s_Type;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return Price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         Price = price;
     }
 

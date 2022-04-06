@@ -1,6 +1,7 @@
 package com.mySSM.dao;
 
 import com.mySSM.pojo.Suite;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,10 +17,10 @@ public interface SuiteMapper {
 
     /**
      * 删除房间
-     * @param id 要删除的房间ID
+     * @param num 要删除的房间num
      * @return 返回sql影响的行数
      */
-    int deleteSuiteById(int id);
+    int deleteSuiteByNum(int num);
 
     /**
      * 更新房间信息
@@ -33,7 +34,7 @@ public interface SuiteMapper {
      * @param id 要查询的房间对象的ID
      * @return 返回要查询的房间对象
      */
-    Suite querySuiteById(Integer  id);
+    Suite querySuiteById(int  id);
 
     /**
      * 查询所有的房间对象
@@ -49,9 +50,10 @@ public interface SuiteMapper {
     Suite querySuiteByNum(int num);
 
     /**
-     * 更新房间的类型
-     * @param suite 要更新房间的类型的房间对象
+     * 更新房间的状态
+     * @param num 要更新房间的类型的房间对象的房号
+     * @param state 新的状态
      * @return 返回sql影响的行数
      */
-    int updateSuite_Type(Suite suite);
+    int updateState(@Param("num") int num, @Param("state") String state);
 }

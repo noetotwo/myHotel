@@ -27,9 +27,6 @@ public class AdminTest {
     @Autowired
     AdminServiceImpl adminService;
 
-    @Autowired
-    SuiteServiceImpl suiteService;
-
 
     Logger logger = Logger.getLogger(AdminTest.class);
 
@@ -54,7 +51,7 @@ public class AdminTest {
 
     @Test
     public void addAdmin(){
-        if (adminService.addAdmin(new User("boss","1",9),new User("3","1",1))){
+        if (adminService.addAdmin(new User("8","1",8),new User("3","1",1))){
             System.out.println("添加成功");
         }else{
             System.out.println("无权操作");
@@ -63,7 +60,7 @@ public class AdminTest {
 
     @Test
     public void DeleteAdmin(){
-        if (adminService.DeleteAdmin(new User("boss","1",9),new User("3"))) {
+        if (adminService.DeleteAdmin(new User("8","1",8),new User("3"))) {
             System.out.println("删除成功");
         }else{
             System.out.println("无权操作");
@@ -72,7 +69,7 @@ public class AdminTest {
 
     @Test
     public void updateAdmin(){
-        if (adminService.UpdateAdmin(new User("boss","1",9),new User("3","1",6))) {
+        if (adminService.UpdateAdmin(new User("8","1",8),new User("3","1",6))) {
             System.out.println("更新成功");
         }else{
             System.out.println("无权操作");
