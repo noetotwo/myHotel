@@ -1,8 +1,11 @@
 package com.mySSM.service;
 
 import com.mySSM.pojo.User;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public interface AdminService {
     /**
      * 更新账号dao

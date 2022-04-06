@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mySSM.dao.AdminMapper">
-    <select id="SelectAdmin" parameterType="com.mySSM.pojo.User" resultType="list">
+    <select id="SelectAdmin" parameterType="com.mySSM.pojo.User" resultType="com.mySSM.pojo.User">
         select * from `admin`
     </select>
 
