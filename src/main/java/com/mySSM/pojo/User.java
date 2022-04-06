@@ -1,15 +1,26 @@
 package com.mySSM.pojo;
 
 public class User {
+    /**
+     * 用户名
+     */
     private String name;
+    /**
+     * 用户密码
+     */
     private String password;
+    /**
+     * 用户级别
+     */
+    private String level;
 
     public User() {
     }
 
-    public User(String name, String password, String sex) {
+    public User(String name, String password,String level) {
         this.name = name;
         this.password = password;
+        this.level = level;
     }
 
     public String getName() {
@@ -28,11 +39,20 @@ public class User {
         this.password = password;
     }
 
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", level='" + level + '\'' +
                 '}';
     }
 }

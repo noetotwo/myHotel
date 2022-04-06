@@ -5,7 +5,7 @@
 <mapper namespace="com.mySSM.dao.LoginMapper">
     <!--resultType错误会导致org.springframework.beans.factory.UnsatisfiedDependencyException -->
     <select id="Login" resultType="map">
-        select * from `user`
-        where name = #{name} and qwd = #{pwd}
+        select * from `admin`
+        where adminname = #{name} and password = #{pwd}
     </select>
 </mapper>

@@ -42,7 +42,7 @@
 <div class="container">
     <div class="header">
         <div class="img-cont ta-center">
-            <br><p>极点接口谨慎使用</p>
+            <br><p>欢迎使用贤哲国际酒店后台管理系统</p>
         </div>
         <div class="navmenu">
             <ul>
@@ -59,8 +59,6 @@
                 <div class="frm-cont">
                     <h3 class="title">贤哲国际酒店后台管理系统</h3>
                     <h4>所属地区：<span class="color-tip">中华神州大陆</span></h4>
-
-                    <h4>时区编码：<span class="color-tip">604</span></h4>
                     <h4>时区编码：<span class="color-tip">604</span></h4>
                     <div class="frm-box">
                         <form>

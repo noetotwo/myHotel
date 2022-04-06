@@ -18,7 +18,7 @@ body{overflow:auto;}
 .foot-line span{display:inline-block;vertical-align:middle;color:#000;}
 .foot-line img{display:inline-block;vertical-align:middle;height:36px;}
 
-.color-tip{color:#336600;}
+.color-tip{color:#336600;font-size: 20px}
 .float-right{float:right;}
 
 .margin-bot20{margin-bottom:20px;}
@@ -35,7 +35,7 @@ body{overflow:auto;}
     -ms-flex-pack: center;
     justify-content: center;}
 
-.frm-cont h3.title{font-size:24px;color:#0641AD;font-weight:700;margin:15px 0;}
+.frm-cont h3.title{font-size:30px;color:#0641AD;font-weight:700;margin:15px 0;}
 
 .frm-cont{margin:0 auto;padding:0 40px 0 40px;}
 .frm-box{font-size:16px;}
