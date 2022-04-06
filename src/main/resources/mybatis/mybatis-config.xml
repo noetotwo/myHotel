@@ -3,6 +3,13 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- MyBatis核心配置文件 -->
 <configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <!--显示的开启全局缓存-->
+        <!--<setting name="cacheEnabled" value="true"/>-->
+    </settings>
+
     <typeAliases>
         <!-- 别名 -->
         <package name="com.mySSM.pojo"/>

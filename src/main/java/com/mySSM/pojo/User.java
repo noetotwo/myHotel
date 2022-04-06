@@ -17,7 +17,12 @@ public class User {
     public User() {
     }
 
-    public User(String name, String password,String level) {
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public User(String name, String password, String level) {
         this.name = name;
         this.password = password;
         this.level = level;

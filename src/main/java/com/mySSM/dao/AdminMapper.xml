@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mySSM.dao.AdminMapper">
+    <select id="SelectAdmin" parameterType="com.mySSM.pojo.User" resultType="list">
+        select * from `admin`
+    </select>
+
+    <update id="UpdateAdmin" parameterType="com.mySSM.pojo.User">
+        update `admin` set adminname = #{name},password = #{password},level = #{level} where adminname = #{name}
+    </update>
+
+    <delete id = "DeleteAdmin" parameterType="com.mySSM.pojo.User">
+        delete from `admin` where  adminname = #{name},password = #{password}
+    </delete>
+
+    <insert id="addAdmin" parameterType="com.mySSM.pojo.User">
+        insert into `admin`(`adminname`,`password`,`level`) value (#{name},#{password},#{level})
+    </insert>
+</mapper>

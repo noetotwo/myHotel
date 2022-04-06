@@ -1,32 +1,29 @@
-package com.mySSM.dao;
+package com.mySSM.service;
 
 import com.mySSM.pojo.User;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
-public interface AdminMapper {
-
+public interface AdminService {
     /**
      * 更新账号dao
      * @param now 新的对象
-     * @return 更新成功返回改变行数
+     * @return 更新成功返回true 反之false
      */
-    int UpdateAdmin(@Param("now") User now);
+    boolean UpdateAdmin(User now);
 
     /**
-     * 增加管理者
+     * 添加管理者
      * @param user 管理对象
-     * @return 添加成功返回改变行数
+     * @return 添加成功返回true 反之false
      */
-    int addAdmin(User user);
+    boolean addAdmin(User user);
 
     /**
      * 删除管理者
      * @param user 管理对象
-     * @return 删除成功返回改变行数
+     * @return 删除成功返回true 反之false
      */
-    int DeleteAdmin(User user);
+    boolean DeleteAdmin(User user);
 
     /**
      * 查询管理者
