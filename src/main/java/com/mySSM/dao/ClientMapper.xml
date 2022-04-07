@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mySSM.dao.ClientMapper">
+    <!--resultType错误会导致org.springframework.beans.factory.UnsatisfiedDependencyException -->
+    <insert id="addClient" parameterType="com.mySSM.pojo.Client">
+        insert into client(name,sex,card,phone,VIP_type,email,RegisterTime)
+        values (#{Name},#{Sex},#{Card},#{Phone},#{VIP_Type},#{Email},#{Register_Time});
+    </insert>
+
+    <select id = "queryClientById" parameterType="_int" resultType="com.mySSM.pojo.Client">
+        select * from client
+        where id = #{id};
+    </select>
+
+    <select id="queryClientByName" resultType="com.mySSM.pojo.Client">
+        select * from client
+        where name = #{name};
+    </select>
+
+    <select id="queryClientByCard" resultType="com.mySSM.pojo.Client">
+        select * from client
+        where card = #{card};
+    </select>
+
+    <select id="SelectAll" resultType="com.mySSM.pojo.Client">
+        select * from client;
+    </select>
+
+    <delete id="DeleteClientById" >
+        delete from client
+        where id = #{id};
+    </delete>
+
+    <delete id="DeleteClientByCard" >
+        delete from client
+        where card = #{card};
+    </delete>
+
+    <update id="UpdateClient" parameterType="com.mySSM.pojo.Client">
+        update client
+        set name = #{Name},sex = #{Sex},card = #{Card} ,phone = #{Phone},email = #{Email}
+        where card = #{Card};
+    </update>
+
+    <update id="setIntegral">
+        update client
+        set integral = #{integral}
+        where card = #{card};
+    </update>
+
+    <update id="setVIP">
+        update client
+        set vip_type = #{vip}
+        where card = #{card};
+    </update>
+</mapper>
