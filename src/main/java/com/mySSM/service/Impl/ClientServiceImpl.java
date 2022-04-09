@@ -2,6 +2,7 @@ package com.mySSM.service.Impl;
 
 import com.mySSM.dao.ClientMapper;
 import com.mySSM.pojo.Client;
+import com.mySSM.pojo.ClientTemp;
 import com.mySSM.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,17 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public boolean addClient(Client client) {
-        if(clientMapper.queryClientByCard(client.getCard()) == null && clientMapper.addClient(client) > 0){
-            return true;
+        ClientTemp temp = clientMapper.Collection(client.getCard());
+        if(temp == null){
+            if (clientMapper.queryClientByCard(client.getCard()) == null && clientMapper.addClient(client) > 0) {
+                return true;
+            }
+        }else{
+            System.out.println(temp);
+            if (clientMapper.queryClientByCard(client.getCard()) == null && clientMapper.inSitu(temp.getClient()) > 0) {
+
+                return true;
+            }
         }
         return false;
     }

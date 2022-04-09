@@ -2,6 +2,7 @@ package com.mySSM.dao;
 
 
 import com.mySSM.pojo.Client;
+import com.mySSM.pojo.ClientTemp;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -29,5 +30,9 @@ public interface ClientMapper {
     int setIntegral(@Param("card")String card,@Param("integral")int integral);
 
     int setVIP(@Param("card")String card,@Param("vip")String type);
+
+    ClientTemp Collection(String card);
+
+    int inSitu(Client client);
 
 }

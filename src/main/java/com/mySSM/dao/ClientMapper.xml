@@ -55,4 +55,13 @@
         set vip_type = #{vip}
         where card = #{card};
     </update>
+
+    <select id = "Collection" resultType="com.mySSM.pojo.ClientTemp">
+        select * from abandoned_client A where del_time = (select max(del_time) from abandoned_client B where A.card = B.card)
+    </select>
+
+    <insert id = "inSitu" parameterType="com.mySSM.pojo.Client">
+        insert into client(id,name,sex,card,phone,VIP_type,email,RegisterTime,integral)
+        values (#{id},#{Name},#{Sex},#{Card},#{Phone},#{VIP_Type},#{Email},#{Register_Time},#{integral});
+    </insert>
 </mapper>

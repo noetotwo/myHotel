@@ -19,7 +19,7 @@ public class ClientTest {
 
     @Test
     public void add(){
-        if(clientService.addClient(new Client("吴家聪","男","123456789012345678","12345678901","白银","",DateUtil.getNowDate()))) {
+        if(clientService.addClient(new Client("贤哲","男","123456789012345678","12345678901","白银","",DateUtil.getNowDate()))) {
             System.out.println("添加客户成功");
         }else {
             System.out.println("添加客户失败");
@@ -92,7 +92,7 @@ public class ClientTest {
 
     @Test
     public void updateIntegral(){
-        if(clientService.setIntegral("123456789012345678",400)){
+        if(clientService.setIntegral("123456789012345678",500)){
             System.out.println("更新客户成功");
         }else {
             System.out.println("更新客户失败");
