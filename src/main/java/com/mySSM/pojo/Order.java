@@ -12,9 +12,9 @@ public class Order {
     /**
      *房间ID
      */
-    private int OrderId;
+    private int suiteId;
     /**
-     *入住时间
+     *订单时间
      */
     private String EnterTime;
     /**
@@ -41,35 +41,43 @@ public class Order {
      *最后结单房间价格
      */
     private int checkPrice;
+    /**
+     * 订单状态
+     */
+    private String OrderState;
+    /**
+     * 订单备注
+     */
+    private String Remark;
 
     public Order() {
     }
 
-    public Order(int clientId, int orderId, String enterTime, String suite_Type, String billingAdmin, int suitePrice) {
+    public Order(int clientId, String enterTime, String suite_Type, String billingAdmin, int suitePrice, String orderState, String remark) {
         ClientId = clientId;
-        OrderId = orderId;
         EnterTime = enterTime;
         Suite_Type = suite_Type;
         this.billingAdmin = billingAdmin;
         SuitePrice = suitePrice;
+        OrderState = orderState;
+        Remark = remark;
     }
 
-    public Order(int clientId, int orderId, String enterTime, String exitTime, String suite_Type, String billingAdmin, String checkAdmin, int suitePrice, int checkPrice) {
+    public Order(int clientId, int suiteId, String enterTime, String suite_Type, String billingAdmin, int suitePrice, String orderState, String remark) {
         ClientId = clientId;
-        OrderId = orderId;
+        this.suiteId = suiteId;
         EnterTime = enterTime;
-        ExitTime = exitTime;
         Suite_Type = suite_Type;
         this.billingAdmin = billingAdmin;
-        this.checkAdmin = checkAdmin;
         SuitePrice = suitePrice;
-        this.checkPrice = checkPrice;
+        OrderState = orderState;
+        Remark = remark;
     }
 
-    public Order(int id, int clientId, int orderId, String enterTime, String exitTime, String suite_Type, String billingAdmin, String checkAdmin, int suitePrice, int checkPrice) {
+    public Order(int id, int clientId, int suiteId, String enterTime, String exitTime, String suite_Type, String billingAdmin, String checkAdmin, int suitePrice, int checkPrice, String orderState, String remark) {
         Id = id;
         ClientId = clientId;
-        OrderId = orderId;
+        this.suiteId = suiteId;
         EnterTime = enterTime;
         ExitTime = exitTime;
         Suite_Type = suite_Type;
@@ -77,6 +85,8 @@ public class Order {
         this.checkAdmin = checkAdmin;
         SuitePrice = suitePrice;
         this.checkPrice = checkPrice;
+        OrderState = orderState;
+        Remark = remark;
     }
 
     public int getId() {
@@ -95,12 +105,12 @@ public class Order {
         ClientId = clientId;
     }
 
-    public int getOrderId() {
-        return OrderId;
+    public int getSuiteId() {
+        return suiteId;
     }
 
-    public void setOrderId(int orderId) {
-        OrderId = orderId;
+    public void setSuiteId(int suiteId) {
+        this.suiteId = suiteId;
     }
 
     public String getEnterTime() {
@@ -159,12 +169,28 @@ public class Order {
         this.checkPrice = checkPrice;
     }
 
+    public String getOrderState() {
+        return OrderState;
+    }
+
+    public void setOrderState(String orderState) {
+        OrderState = orderState;
+    }
+
+    public String getRemark() {
+        return Remark;
+    }
+
+    public void setRemark(String remark) {
+        Remark = remark;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "Id=" + Id +
                 ", ClientId=" + ClientId +
-                ", OrderId=" + OrderId +
+                ", OrderId=" + suiteId +
                 ", EnterTime='" + EnterTime + '\'' +
                 ", ExitTime='" + ExitTime + '\'' +
                 ", Suite_Type='" + Suite_Type + '\'' +
@@ -172,6 +198,8 @@ public class Order {
                 ", checkAdmin='" + checkAdmin + '\'' +
                 ", SuitePrice=" + SuitePrice +
                 ", checkPrice=" + checkPrice +
+                ", OrderState='" + OrderState + '\'' +
+                ", Remark='" + Remark + '\'' +
                 '}';
     }
 }
