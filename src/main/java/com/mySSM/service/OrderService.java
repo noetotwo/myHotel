@@ -7,11 +7,13 @@ public interface OrderService {
 
     boolean addOrder(Order order);
 
+    Order getOrderID(Integer id);
+
     List<Order> getAll();
 
-    List<Order> getOrderByClient(int id);
+    List<Order> getOrderByCard(String card);
 
-    List<Order> getOrderBySuite(int id);
+    List<Order> getOrderBySuiteNum(String num);
 
     List<Order> getTimeInterval(String start,String end);
 

@@ -15,15 +15,22 @@ public class LoginInterceptor implements HandlerInterceptor {
         System.out.println("h1");
         // 获取请求的URL
         String url = request.getRequestURI();
+
+        // 获取 session
+        HttpSession session = request.getSession();
+
         // login.jsp或登录请求放行，不拦截
         if (url.indexOf("/Login") >= 0) {
             System.out.println("h2");
             return true;
         }
-        // 获取 session
-        HttpSession session = request.getSession();
-        Object obj = session.getAttribute("user");
-        if (obj != null) return true;
+        if (url.indexOf("/again") >= 0) {
+            //注销会话
+            session.invalidate();
+        }else {
+            Object obj = session.getAttribute("user");
+            if (obj != null) return true;
+        }
         // 没有登录且不是登录页面，转发到登录页面
         request.getRequestDispatcher("/").forward(request, response);
         return false;

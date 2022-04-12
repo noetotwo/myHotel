@@ -6,13 +6,25 @@ public class Order {
      */
     private int Id;
     /**
-     *客户ID
+     * 客户名字
      */
-    private int ClientId;
+    private String name;
     /**
-     *房间ID
+     * 客户性别
      */
-    private int suiteId;
+    private String sex;
+    /**
+     * 客户身份证
+     */
+    private String card;
+    /**
+     * 客户手机号
+     */
+    private String phone;
+    /**
+     * 房间号
+     */
+    private String suiteNum;
     /**
      *订单时间
      */
@@ -24,7 +36,7 @@ public class Order {
     /**
      *房间类型
      */
-    private String Suite_Type;
+    private String SuiteType;
     /**
      * 开单管理员
      */
@@ -36,7 +48,7 @@ public class Order {
     /**
      *房间价格
      */
-    private int  SuitePrice;
+    private int  suitePrice;
     /**
      *最后结单房间价格
      */
@@ -44,48 +56,48 @@ public class Order {
     /**
      * 订单状态
      */
-    private String OrderState;
+    private String state;
     /**
      * 订单备注
      */
     private String Remark;
+    /**
+     * 订单的哈希码
+     */
+    private int code;
 
     public Order() {
     }
 
-    public Order(int clientId, String enterTime, String suite_Type, String billingAdmin, int suitePrice, String orderState, String remark) {
-        ClientId = clientId;
+    public Order(String name, String sex, String card, String phone, String suiteNum, String enterTime, String suite_Type, String billingAdmin, int suitePrice, String orderState, String remark) {
+        this.name = name;
+        this.sex = sex;
+        this.card = card;
+        this.phone = phone;
+        this.suiteNum = suiteNum;
         EnterTime = enterTime;
-        Suite_Type = suite_Type;
+        SuiteType = suite_Type;
         this.billingAdmin = billingAdmin;
-        SuitePrice = suitePrice;
-        OrderState = orderState;
+        this.suitePrice = suitePrice;
+        state = orderState;
         Remark = remark;
     }
 
-    public Order(int clientId, int suiteId, String enterTime, String suite_Type, String billingAdmin, int suitePrice, String orderState, String remark) {
-        ClientId = clientId;
-        this.suiteId = suiteId;
-        EnterTime = enterTime;
-        Suite_Type = suite_Type;
-        this.billingAdmin = billingAdmin;
-        SuitePrice = suitePrice;
-        OrderState = orderState;
-        Remark = remark;
-    }
-
-    public Order(int id, int clientId, int suiteId, String enterTime, String exitTime, String suite_Type, String billingAdmin, String checkAdmin, int suitePrice, int checkPrice, String orderState, String remark) {
+    public Order(int id, String name, String sex, String card, String phone, String suiteNum, String enterTime, String exitTime, String suite_Type, String billingAdmin, String checkAdmin, int suitePrice, int checkPrice, String orderState, String remark) {
         Id = id;
-        ClientId = clientId;
-        this.suiteId = suiteId;
+        this.name = name;
+        this.sex = sex;
+        this.card = card;
+        this.phone = phone;
+        this.suiteNum = suiteNum;
         EnterTime = enterTime;
         ExitTime = exitTime;
-        Suite_Type = suite_Type;
+        SuiteType = suite_Type;
         this.billingAdmin = billingAdmin;
         this.checkAdmin = checkAdmin;
-        SuitePrice = suitePrice;
+        this.suitePrice = suitePrice;
         this.checkPrice = checkPrice;
-        OrderState = orderState;
+        state = orderState;
         Remark = remark;
     }
 
@@ -97,20 +109,44 @@ public class Order {
         Id = id;
     }
 
-    public int getClientId() {
-        return ClientId;
+    public String getName() {
+        return name;
     }
 
-    public void setClientId(int clientId) {
-        ClientId = clientId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getSuiteId() {
-        return suiteId;
+    public String getSex() {
+        return sex;
     }
 
-    public void setSuiteId(int suiteId) {
-        this.suiteId = suiteId;
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getCard() {
+        return card;
+    }
+
+    public void setCard(String card) {
+        this.card = card;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getSuiteNum() {
+        return suiteNum;
+    }
+
+    public void setSuiteNum(String suiteNum) {
+        this.suiteNum = suiteNum;
     }
 
     public String getEnterTime() {
@@ -129,12 +165,12 @@ public class Order {
         ExitTime = exitTime;
     }
 
-    public String getSuite_Type() {
-        return Suite_Type;
+    public String getSuiteType() {
+        return SuiteType;
     }
 
-    public void setSuite_Type(String suite_Type) {
-        Suite_Type = suite_Type;
+    public void setSuiteType(String suiteType) {
+        SuiteType = suiteType;
     }
 
     public String getBillingAdmin() {
@@ -154,11 +190,11 @@ public class Order {
     }
 
     public int getSuitePrice() {
-        return SuitePrice;
+        return suitePrice;
     }
 
     public void setSuitePrice(int suitePrice) {
-        SuitePrice = suitePrice;
+        this.suitePrice = suitePrice;
     }
 
     public int getCheckPrice() {
@@ -169,12 +205,12 @@ public class Order {
         this.checkPrice = checkPrice;
     }
 
-    public String getOrderState() {
-        return OrderState;
+    public String getState() {
+        return state;
     }
 
-    public void setOrderState(String orderState) {
-        OrderState = orderState;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getRemark() {
@@ -185,21 +221,33 @@ public class Order {
         Remark = remark;
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "Id=" + Id +
-                ", ClientId=" + ClientId +
-                ", OrderId=" + suiteId +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", card='" + card + '\'' +
+                ", phone='" + phone + '\'' +
+                ", suiteNum='" + suiteNum + '\'' +
                 ", EnterTime='" + EnterTime + '\'' +
                 ", ExitTime='" + ExitTime + '\'' +
-                ", Suite_Type='" + Suite_Type + '\'' +
+                ", SuiteType='" + SuiteType + '\'' +
                 ", billingAdmin='" + billingAdmin + '\'' +
                 ", checkAdmin='" + checkAdmin + '\'' +
-                ", SuitePrice=" + SuitePrice +
+                ", suitePrice=" + suitePrice +
                 ", checkPrice=" + checkPrice +
-                ", OrderState='" + OrderState + '\'' +
+                ", state='" + state + '\'' +
                 ", Remark='" + Remark + '\'' +
+                ", code=" + code +
                 '}';
     }
 }

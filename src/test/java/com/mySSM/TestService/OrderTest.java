@@ -18,7 +18,7 @@ public class OrderTest {
 
     @Test
     public void addTest(){
-        if(orderService.addOrder(new Order(1,1, DateUtil.getNowDate(), "普通大床房","1", 100,"入住中",""))) {
+        if(orderService.addOrder(new Order("吴家聪","男","123456789123456789","12345678912" ,"888",DateUtil.getNowDate(), "普通大床房","1", 100,"入住中",""))) {
             System.out.println("添加客户成功");
         }else {
             System.out.println("添加客户失败");
@@ -31,21 +31,13 @@ public class OrderTest {
     }
 
     @Test
-    public void getOrderByClient(){
-        if(orderService.getOrderByClient(1) != null){
-            System.out.println("查询客户成功");
-        }else{
-            System.out.println("查询客户失败");
-        }
+    public void getCard(){
+        orderService.getOrderByCard("123456789123456789");
     }
 
     @Test
-    public void getOrderBySuite(){
-        if(orderService.getOrderBySuite(1) != null){
-            System.out.println("查询客户成功");
-        }else{
-            System.out.println("查询客户失败");
-        }
+    public void getNum(){
+        orderService.getOrderBySuiteNum("12345678912");
     }
 
     @Test

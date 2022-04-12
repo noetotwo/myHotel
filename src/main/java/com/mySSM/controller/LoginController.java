@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,12 +34,18 @@ public class LoginController {
      */
     @RequestMapping(value = "/Login" ,method = RequestMethod.POST ,consumes="application/json")
     @ResponseBody
-    public Map Login(@RequestBody User user, HttpSession session){
+    public Map Login(@RequestBody User user, HttpSession session, HttpServletResponse response){
         Map map = new HashMap();
         if(loginService.Login(user.getName(), user.getPassword())){
             map.put("value","/xian/Home");
+            map.put("username",user.getName());
             // 登录成功，将用户信息保存到session对象中
-            session.setAttribute("user", user);
+            session.setAttribute("user", user.getName());
+
+            //将对象cookie转给jsp
+            Cookie k1 = new Cookie("name",user.getName());
+            k1.setSecure(true);
+            response.addCookie(k1);
         } else {
             map.put("value","/xian/error");
         }
@@ -54,4 +62,12 @@ public class LoginController {
         return "error";
     }
 
+    @RequestMapping("/EndLogin")
+    public String EndLogin(HttpSession session){
+        session.invalidate();
+        return "End";
+    }
+
+    @RequestMapping("/again")
+    public void again(){}
 }

@@ -5,31 +5,36 @@
 <mapper namespace="com.mySSM.dao.OrderMapper">
 
     <insert id = "addOrder" parameterType = "com.mySSM.pojo.Order">
-        insert into `order`(ClientID,suiteID,EnterTime,suiteType,billingAdmin,SuitePrice,OrderState,Remark)
-        value(#{ClientId},#{suiteId},#{EnterTime},#{suite_Type},#{billingAdmin},#{SuitePrice},#{OrderState},#{Remark});
+        insert into `order`(name,sex,card,phone,suiteNum,EnterTime,suiteType,billingAdmin,SuitePrice,OrderState,Remark)
+        value(#{name},#{sex},#{card},#{phone},#{suiteNum},#{EnterTime},#{suiteType},#{billingAdmin},#{suitePrice},#{state},#{Remark});
     </insert>
+
+    <select id = "getOrderID" resultType="com.mySSM.pojo.Order">
+        select * from `order`
+        where id = #{id};
+    </select>
 
     <select id = "getAll" resultType="com.mySSM.pojo.Order">
         select * from `order`;
     </select>
 
-    <select id="getOrderByClient" resultType="com.mySSM.pojo.Order">
+    <select id="getOrderByCard" resultType="com.mySSM.pojo.Order">
         select *
         from `order`
-        where ClientID = #{id};
+        where card = #{card};
     </select>
 
-    <select id="getOrderBySuite" resultType="com.mySSM.pojo.Order">
+    <select id="getOrderBySuiteNum" resultType="com.mySSM.pojo.Order">
         select *
         from `order`
-        where suiteID = #{id};
+        where suiteNum = #{num};
     </select>
 
     <update id="UpdateOrder" parameterType="com.mySSM.pojo.Order">
         UPDATE `order`
         set ClientID = #{ClientId},suiteID = #{suiteId},EnterTime = #{EnterTime},EnitTime = #{EnitTime},
-            SuiteType = #{Suite_Type},billingAdmin = #{billingAdmin},checkAdmin = #{checkAdmin},
-            SuitePrice = #{SuitePrice},checkPrice = #{checkPrice},OrderState = #{OrderState},Remark = #{Remark}
+            SuiteType = #{SuiteType},billingAdmin = #{billingAdmin},checkAdmin = #{checkAdmin},
+            SuitePrice = #{suitePrice},checkPrice = #{checkPrice},OrderState = #{state},Remark = #{Remark}
         where id = #{Id};
     </update>
 
