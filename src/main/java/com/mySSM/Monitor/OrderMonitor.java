@@ -1,5 +1,6 @@
-package com.mySSM.Utils;
+package com.mySSM.Monitor;
 
+import com.mySSM.Utils.DateUtil;
 import com.mySSM.pojo.onlyCode;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,7 +28,7 @@ public class OrderMonitor extends Thread{
                 }
             }
             try {
-                Thread.sleep(5000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

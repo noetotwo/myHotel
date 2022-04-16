@@ -5,39 +5,73 @@
 <mapper namespace="com.mySSM.dao.SuiteMapper">
 
     <insert id="addSuite" parameterType="com.mySSM.pojo.Suite">
-        insert into suite (room_num,Suite_Type,Price,State,img,introduce)
-        values (#{room_num},#{S_Type},#{Price},#{State},#{Img},#{Introduce});
+        insert into suite (roomNum,SType,Price,Img,Introduce)
+        values (#{roomNum},#{SType},#{Price},#{Img},#{Introduce});
     </insert>
 
     <delete id="deleteSuiteByNum" parameterType="_int">
         delete from suite
-        where room_num=#{num}
+        where roomNum=#{num}
     </delete>
 
     <update id="updateSuiteById" parameterType="com.mySSM.pojo.Suite">
         update  suite
-        set  room_num=#{room_num},suite_Type=#{S_Type},Price=#{Price},State=#{State},Img=#{Img},introduce=#{Introduce}
-        where id=#{Id};
+        <set>
+            <if test="roomNum != null">
+                roomNum=#{roomNum},
+            </if>
+            <if test="SType != null">
+                SType=#{SType},
+            </if>
+            <if test="Price != null">
+                Price=#{Price},
+            </if>
+            <if test="State != null">
+                State=#{State},
+            </if>
+            <if test="Img != null">
+                Img=#{Img},
+            </if>
+            <if test="Introduce != null">
+                Introduce=#{Introduce}
+            </if>
+        </set>
+        where id=#{id};
     </update>
 
-    <select id="querySuiteById" parameterType="_int" resultType="com.mySSM.pojo.Suite">
+    <select id="querySuiteById" resultType="com.mySSM.pojo.Suite">
         select * from suite
-        where id=#{Id};
+        where id=#{id};
+    </select>
+
+    <select id="querySuiteByType" resultType="com.mySSM.pojo.Suite">
+        select * from suite
+        where Sype = #{SType}
     </select>
 
     <select id="queryAllSuite" resultType="com.mySSM.pojo.Suite">
-        select * from suite
+        select * from `suite`
+    </select>
+
+    <select id="queryNullSuite" resultType="com.mySSM.pojo.Suite">
+        select * from `suite`
+        where SType = '空房'
     </select>
 
     <select id="querySuiteByNum" resultType="com.mySSM.pojo.Suite">
         select * from suite
-        where room_num=#{room_num};
+        where roomNum=#{num};
+    </select>
+
+    <select id="isNull" resultType="com.mySSM.pojo.Suite">
+        select * from suite
+        where roomNum=#{num} and state = '空房';
     </select>
 
     <update id="updateState">
         update  suite
         set State= #{state}
-        where room_num= #{num};
+        where roomNum = #{num};
     </update>
 
 </mapper>

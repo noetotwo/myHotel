@@ -5,7 +5,7 @@
 <mapper namespace="com.mySSM.dao.OrderMapper">
 
     <insert id = "addOrder" parameterType = "com.mySSM.pojo.Order">
-        insert into `order`(name,sex,card,phone,suiteNum,EnterTime,suiteType,billingAdmin,SuitePrice,OrderState,Remark)
+        insert into `order`(name,sex,card,phone,suiteNum,EnterTime,suiteType,billingAdmin,SuitePrice,state,Remark)
         value(#{name},#{sex},#{card},#{phone},#{suiteNum},#{EnterTime},#{suiteType},#{billingAdmin},#{suitePrice},#{state},#{Remark});
     </insert>
 
@@ -15,27 +15,70 @@
     </select>
 
     <select id = "getAll" resultType="com.mySSM.pojo.Order">
-        select * from `order`;
+        select * from `order` where state != '结单';
     </select>
 
     <select id="getOrderByCard" resultType="com.mySSM.pojo.Order">
         select *
         from `order`
-        where card = #{card};
+        where card = #{card} ;
     </select>
 
     <select id="getOrderBySuiteNum" resultType="com.mySSM.pojo.Order">
         select *
         from `order`
-        where suiteNum = #{num};
+        where suiteNum = #{num} and state != '结单';
     </select>
+
+    <update id="Finish">
+        update `order` set `state` = '结单', checkAdmin = #{checkAdmin},checkPrice = #{checkPrice},ExitTime = #{ExitTime}
+        where id = #{id} and state != '结单';;
+    </update>
 
     <update id="UpdateOrder" parameterType="com.mySSM.pojo.Order">
         UPDATE `order`
-        set ClientID = #{ClientId},suiteID = #{suiteId},EnterTime = #{EnterTime},EnitTime = #{EnitTime},
-            SuiteType = #{SuiteType},billingAdmin = #{billingAdmin},checkAdmin = #{checkAdmin},
-            SuitePrice = #{suitePrice},checkPrice = #{checkPrice},OrderState = #{state},Remark = #{Remark}
-        where id = #{Id};
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="card != null">
+                card = #{card},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="suiteNum != null">
+                suiteNum = #{suiteNum},
+            </if>
+            <if test="EnterTime != null">
+                EnterTime = #{EnterTime},
+            </if>
+            <if test="ExitTime != null">
+                ExitTime = #{ExitTime},
+            </if>
+            <if test="suiteType != null">
+                suiteType = #{SuiteType},
+            </if>
+            <if test="billingAdmin != null">
+                billingAdmin = #{billingAdmin},
+            </if>
+            <if test="checkAdmin != null">
+                checkAdmin = #{checkAdmin},
+            </if>
+            <if test="suitePrice != null">
+                suitePrice = #{suitePrice},
+            </if>
+            <if test="checkPrice != null">
+                checkPrice = #{checkPrice},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="remark != null">
+                remark = #{Remark},
+            </if>
+        </set>
+        where id = #{id};
     </update>
 
 </mapper>

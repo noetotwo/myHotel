@@ -4,25 +4,9 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="#"/>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>贤哲管理系统</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/common/layui/css/layui.css"/>
-    <%--    获取系统时间--%>
-    <script>
-        window.onload = function(){
-            function getDate(){
-                var today = new Date();
-                var date;
-                date = (today.getFullYear()) +"-" + (today.getMonth() + 1 ) + "-" + today.getDate() + " " + today.toLocaleTimeString();
-                return date;
-            }
-            window.setInterval(function(){
-                document.getElementById("EnterTime").value=getDate();
-            }, 1000);
-        }
-    </script>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -62,9 +46,9 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item " ><a href="${pageContext.request.contextPath}/xian/Home">主页</a></li>
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="layui-this" href="javascript:;">住房管理</a>
+                <li class="layui-nav-item" ><a href="${pageContext.request.contextPath}/xian/Home">主页</a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">住房管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="${pageContext.request.contextPath}/Order/addOrder">住户入住</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/Order/list">住户列表</a></dd>
@@ -72,8 +56,8 @@
                         <dd><a href="${pageContext.request.contextPath}/Order/check">住户退房</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">房间管理</a>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="layui-this" href="javascript:;">房间管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="${pageContext.request.contextPath}/suite/addSuite">添加房间</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/suite/list">房间列表</a></dd>
@@ -93,59 +77,20 @@
     </div>
 
     <div class="layui-body">
-        <!-- 内容主体区域 -->
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>添加住客</legend>
+            <legend>添加新房间</legend>
         </fieldset>
         <div class="right">
 
-            <form class="layui-form " >
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">姓名</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="name" required  autocomplete="off" class="layui-input layui-input-inline" >
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">性别</label>
-                    <div class="layui-input-block">
-                        <select id="sex" class="layui-input" autocomplete="off"  required >
-                            <option value=""></option>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">身份证号</label>
-                    <div class="layui-input-block">
-                        <input type="card" id="card" oninput="if(value.length>18)value=value.slice(0,18)" required  value="${o.card}" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">手机号</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="phone" oninput="if(value.length>11)value=value.slice(0,11)" required autocomplete="off" class="layui-input ">
-                    </div>
-                </div>
-
-                <div class="layui-form-item" >
-                    <label class="layui-form-label">入住时间</label>
-                    <div class="layui-input-block" >
-                        <input type="text" id="EnterTime" required  autocomplete="off" class="layui-input">
-                    </div>
-                </div>
+            <form class="layui-form" >
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">房间号</label>
                     <div class="layui-input-block">
-                        <input type="text" id="suiteNum" oninput="Num()" required autocomplete="off" class="layui-input layui-input-inline">
+                        <input type="text" id="suiteNum" required autocomplete="off" class="layui-input layui-input-inline">
                     </div>
                 </div>
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">房间价格</label>
                     <div class="layui-input-block">
@@ -178,10 +123,35 @@
                     </div>
                 </div>
 
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">备注</label>
+                <div class="layui-form-item layui-upload">
+                    <label class="layui-form-label"></label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入备注"  id = "remark"  class="layui-textarea"></textarea>
+                        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+                        <div class="layui-upload-list" style="max-width: 1000px;">
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col>
+                                    <col width="150">
+                                    <col width="260">
+                                    <col width="150">
+                                </colgroup>
+                                <thead>
+                                <tr><th>文件名</th>
+                                    <th>大小</th>
+                                    <th>上传进度</th>
+                                    <th>操作</th>
+                                </tr></thead>
+                                <tbody id="demoList"></tbody>
+                            </table>
+                        </div>
+                        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">房间介绍</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入备注"  id = "introduce"  class="layui-textarea"></textarea>
                     </div>
                 </div>
 
@@ -192,18 +162,17 @@
                 </div>
             </form>
         </div>
+
     </div>
 
 </div>
-<script type="text/html" id="barDemo">
-    <a class="layui-btn  layui-btn-xs" lay-event="del">编辑</a>
-</script>
 <script src="${pageContext.request.contextPath}/static/common/jquery-3.6.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/common/layui/layui.js"></script>
 <script>
     //JS
-    layui.use(['element', 'layer', 'util'], function(){
+    layui.use(['upload','element', 'layer', 'util'], function(){
         var element = layui.element
+            ,upload = layui.upload
             ,layer = layui.layer
             ,util = layui.util
             ,$ = layui.$;
@@ -226,77 +195,111 @@
             }
         });
 
-    });
-
-    $(".layui-layer-btn0").on("click",function () {
-        add()
-    });
-
-    function add(){
-        if(document.getElementById("card").value != null && document.getElementById("suiteNum").value != null){
-        var json = {
-            "name": document.getElementById("name").value,
-            "sex":document.getElementById("sex").value,
-            "card":document.getElementById("card").value,
-            "phone":document.getElementById("phone").value,
-            "enterTime":document.getElementById("EnterTime").value,
-            "suitePrice":document.getElementById("suitePrice").value,
-            "billingAdmin":"${cookie.name.value}",
-            "state":"已入住",
-            "suiteType":document.getElementById("suiteType").value,
-            "suiteNum":document.getElementById("suiteNum").value,
-            "remark":document.getElementById("remark").value
-        }
-        var jsonDate = JSON.stringify(json)
-        console.log(jsonDate)
-        $.ajax({
-            type : 'POST',
-            data : jsonDate,
-            dataType : 'json',
-            contentType: 'application/json;charset=UTF-8',
-            url :"${pageContext.request.contextPath}/Order/add",
-            success: function(data){
-                if(data == "200"){
-                    clear()
-                    layer.msg('入住成功');
-                }else {
-                    layer.msg('入住失败');
-                }
-            }
-
+        $(".layui-layer-btn0").on("click",function () {
+            add()
         });
-        }else{
-            layer.msg('不能为空');
-        }
-    }
-    function clear(){
-        $("#name").val(" ");
-        $("#sex").val(" ");
-        $("#card").val(" ");
-        $("#phone").val(" ");
-        $("#EnterTime").val(" ");
-        $("#suitePrice").val(" ");
-        $("#Type").val(" ");
-        $("#suiteNum").val(" ");
-        $("#remark").val(" ");
-    }
 
-    function Num(){
-        if(document.getElementById("suiteNum").value != null){
-            var num = String(document.getElementById("suiteNum").value)
+        function add(){
+            var json = {
+                "roomNum": document.getElementById("suiteNum").value,
+                "price":document.getElementById("suitePrice").value,
+                "stype":document.getElementById("suiteType").value,
+                "introduce":document.getElementById("introduce").value
+            }
+            var jsonDate = JSON.stringify(json)
+            console.log(jsonDate)
             $.ajax({
-                url :"${pageContext.request.contextPath}/suite/num?num="+num,
+                type : 'POST',
+                data : jsonDate,
+                dataType : 'json',
+                contentType: 'application/json;charset=UTF-8',
+                url :"${pageContext.request.contextPath}/suite/add",
                 success: function(data){
-                    $("#suitePrice").val(data.price);
-                    $("#suiteType").val(data.stype);
+                    if(data == "200"){
+                        clear()
+                        layer.msg('添加成功');
+                    }else {
+                        layer.msg('添加失败');
+                    }
                 }
+
             });
-        }else{
-            layer.msg('房间号不能为空');
+        }
+        function clear(){
+            $("#suitePrice").val(" ");
+            $("#suiteType").val(" ");
+            $("#roomNum").val(" ");
+            $("#introduce").val(" ");
         }
 
-    }
 
+        var uploadListIns = upload.render({
+            elem: '#testList'
+            ,elemList: $('#demoList') //列表元素对象
+            ,url: 'https://httpbin.org/post' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+            ,accept: 'file'
+            ,multiple: true
+            ,number: 3
+            ,auto: false
+            ,bindAction: '#testListAction'
+            ,choose: function(obj){
+                var that = this;
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function(index, file, result){
+                    var tr = $(['<tr id="upload-'+ index +'">'
+                        ,'<td>'+ file.name +'</td>'
+                        ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+                        ,'<td><div class="layui-progress" lay-filter="progress-demo-'+ index +'"><div class="layui-progress-bar" lay-percent=""></div></div></td>'
+                        ,'<td>'
+                        ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                        ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                        ,'</td>'
+                        ,'</tr>'].join(''));
+
+                    //单个重传
+                    tr.find('.demo-reload').on('click', function(){
+                        obj.upload(index, file);
+                    });
+
+                    //删除
+                    tr.find('.demo-delete').on('click', function(){
+                        delete files[index]; //删除对应的文件
+                        tr.remove();
+                        uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
+
+                    that.elemList.append(tr);
+                    element.render('progress'); //渲染新加的进度条组件
+                });
+            }
+            ,done: function(res, index, upload){ //成功的回调
+                var that = this;
+                //if(res.code == 0){ //上传成功
+                var tr = that.elemList.find('tr#upload-'+ index)
+                    ,tds = tr.children();
+                tds.eq(3).html(''); //清空操作
+                delete this.files[index]; //删除文件队列已经上传成功的文件
+                return;
+                //}
+                this.error(index, upload);
+            }
+            ,allDone: function(obj){ //多文件上传完毕后的状态回调
+                console.log(obj)
+            }
+            ,error: function(index, upload){ //错误回调
+                var that = this;
+                var tr = that.elemList.find('tr#upload-'+ index)
+                    ,tds = tr.children();
+                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+            }
+            ,progress: function(n, elem, e, index){ //注意：index 参数为 layui 2.6.6 新增
+                element.progress('progress-demo-'+ index, n + '%'); //执行进度条。n 即为返回的进度百分比
+            }
+        });
+
+
+    });
 </script>
 </body>
 </html>

@@ -21,11 +21,9 @@ public class SuiteServiceImpl implements SuiteService {
 
 
     @Override
-    public boolean addSuite(User user, Suite suite) {
-        if(adminMapper.ComparedAdmin(user) != null && user.getLevel() > 3){
-            if(suiteMapper.querySuiteByNum(suite.getRoom_num()) == null && suiteMapper.addSuite(suite) > 0){
-                return true;
-            }
+    public boolean addSuite(Suite suite) {
+        if(suiteMapper.querySuiteByNum(suite.getRoomNum()) == null && suiteMapper.addSuite(suite) > 0){
+            return true;
         }
         return false;
     }
@@ -41,11 +39,9 @@ public class SuiteServiceImpl implements SuiteService {
     }
 
     @Override
-    public boolean updateSuiteById(User user, Suite suite) {
-        if(adminMapper.ComparedAdmin(user) != null && user.getLevel() > 3){
-            if(suiteMapper.updateSuiteById(suite) > 0){
-                return true;
-            }
+    public boolean updateSuiteById(Suite suite) {
+        if(suiteMapper.updateSuiteById(suite) > 0){
+            return true;
         }
         return false;
     }
@@ -56,8 +52,18 @@ public class SuiteServiceImpl implements SuiteService {
     }
 
     @Override
+    public ArrayList<Suite> querySuiteByType(String sType) {
+        return suiteMapper.querySuiteByType(sType);
+    }
+
+    @Override
     public ArrayList<Suite> queryAllSuite() {
         return suiteMapper.queryAllSuite();
+    }
+
+    @Override
+    public ArrayList<Suite> queryNullSuite() {
+        return suiteMapper.queryNullSuite();
     }
 
     @Override
@@ -68,6 +74,14 @@ public class SuiteServiceImpl implements SuiteService {
     @Override
     public boolean updateState(int num,String state) {
         if(suiteMapper.updateState(num,state) > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isNull(int num) {
+        if(suiteMapper.isNull(num) != null){
             return true;
         }
         return false;

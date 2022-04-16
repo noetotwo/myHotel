@@ -4,7 +4,7 @@ public class Order {
     /**
      *订单ID
      */
-    private int Id;
+    private Integer Id;
     /**
      * 客户名字
      */
@@ -48,11 +48,11 @@ public class Order {
     /**
      *房间价格
      */
-    private int  suitePrice;
+    private Integer suitePrice;
     /**
      *最后结单房间价格
      */
-    private int checkPrice;
+    private Integer checkPrice;
     /**
      * 订单状态
      */
@@ -61,15 +61,11 @@ public class Order {
      * 订单备注
      */
     private String Remark;
-    /**
-     * 订单的哈希码
-     */
-    private int code;
 
     public Order() {
     }
 
-    public Order(String name, String sex, String card, String phone, String suiteNum, String enterTime, String suite_Type, String billingAdmin, int suitePrice, String orderState, String remark) {
+    public Order(String name, String sex, String card, String phone, String suiteNum, String enterTime, String suite_Type, String billingAdmin, Integer suitePrice, String orderState, String remark) {
         this.name = name;
         this.sex = sex;
         this.card = card;
@@ -83,7 +79,7 @@ public class Order {
         Remark = remark;
     }
 
-    public Order(int id, String name, String sex, String card, String phone, String suiteNum, String enterTime, String exitTime, String suite_Type, String billingAdmin, String checkAdmin, int suitePrice, int checkPrice, String orderState, String remark) {
+    public Order(Integer id, String name, String sex, String card, String phone, String suiteNum, String enterTime, String exitTime, String suite_Type, String billingAdmin, String checkAdmin, Integer suitePrice, Integer checkPrice, String orderState, String remark) {
         Id = id;
         this.name = name;
         this.sex = sex;
@@ -101,11 +97,11 @@ public class Order {
         Remark = remark;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
 
@@ -189,19 +185,19 @@ public class Order {
         this.checkAdmin = checkAdmin;
     }
 
-    public int getSuitePrice() {
+    public Integer getSuitePrice() {
         return suitePrice;
     }
 
-    public void setSuitePrice(int suitePrice) {
+    public void setSuitePrice(Integer suitePrice) {
         this.suitePrice = suitePrice;
     }
 
-    public int getCheckPrice() {
+    public Integer getCheckPrice() {
         return checkPrice;
     }
 
-    public void setCheckPrice(int checkPrice) {
+    public void setCheckPrice(Integer checkPrice) {
         this.checkPrice = checkPrice;
     }
 
@@ -219,14 +215,6 @@ public class Order {
 
     public void setRemark(String remark) {
         Remark = remark;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 
     @Override
@@ -247,7 +235,6 @@ public class Order {
                 ", checkPrice=" + checkPrice +
                 ", state='" + state + '\'' +
                 ", Remark='" + Remark + '\'' +
-                ", code=" + code +
                 '}';
     }
 }

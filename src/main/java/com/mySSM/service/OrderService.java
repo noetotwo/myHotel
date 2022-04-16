@@ -13,9 +13,11 @@ public interface OrderService {
 
     List<Order> getOrderByCard(String card);
 
-    List<Order> getOrderBySuiteNum(String num);
+    Order getOrderBySuiteNum(int num);
 
     List<Order> getTimeInterval(String start,String end);
+
+    boolean Finish(Order order);
 
     boolean UpdateOrder(Order order);
 }

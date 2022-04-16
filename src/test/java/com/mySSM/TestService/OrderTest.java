@@ -37,7 +37,7 @@ public class OrderTest {
 
     @Test
     public void getNum(){
-        orderService.getOrderBySuiteNum("12345678912");
+        orderService.getOrderBySuiteNum(123);
     }
 
     @Test
@@ -51,7 +51,10 @@ public class OrderTest {
 
     @Test
     public void update(){
-        if(orderService.UpdateOrder(new Order())){
+        Order order = new Order();
+        order.setId(4);
+        order.setName("吴家聪");
+        if(orderService.UpdateOrder(order)){
             System.out.println("更新客户成功");
         }else {
             System.out.println("更新客户失败");

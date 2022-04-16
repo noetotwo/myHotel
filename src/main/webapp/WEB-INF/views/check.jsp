@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="#"/>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>贤哲管理系统</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/common/layui/css/layui.css"/>
@@ -13,13 +11,14 @@
     <script>
         window.onload = function(){
             function getDate(){
+                debugger;
                 var today = new Date();
                 var date;
-                date = (today.getFullYear()) +"-" + (today.getMonth() + 1 ) + "-" + today.getDate() + " " + today.toLocaleTimeString();
+                date = (today.getFullYear()) +"-" + (today.getMonth() + 1 ) + "-" + today.getDate() + "-" + today.toLocaleTimeString();
                 return date;
             }
             window.setInterval(function(){
-                document.getElementById("EnterTime").value=getDate();
+                document.getElementById("ExitTime").value=getDate();
             }, 1000);
         }
     </script>
@@ -62,7 +61,7 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item " ><a href="${pageContext.request.contextPath}/xian/Home">主页</a></li>
+                <li class="layui-nav-item" ><a href="${pageContext.request.contextPath}/xian/Home">主页</a></li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="layui-this" href="javascript:;">住房管理</a>
                     <dl class="layui-nav-child">
@@ -73,7 +72,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">房间管理</a>
+                    <a class="" href="javascript:;">房间管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="${pageContext.request.contextPath}/suite/addSuite">添加房间</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/suite/list">房间列表</a></dd>
@@ -93,117 +92,102 @@
     </div>
 
     <div class="layui-body">
-        <!-- 内容主体区域 -->
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>添加住客</legend>
+            <legend>添加新房间</legend>
         </fieldset>
         <div class="right">
 
-            <form class="layui-form " >
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">姓名</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="name" required  autocomplete="off" class="layui-input layui-input-inline" >
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">性别</label>
-                    <div class="layui-input-block">
-                        <select id="sex" class="layui-input" autocomplete="off"  required >
-                            <option value=""></option>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">身份证号</label>
-                    <div class="layui-input-block">
-                        <input type="card" id="card" oninput="if(value.length>18)value=value.slice(0,18)" required  value="${o.card}" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">手机号</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="phone" oninput="if(value.length>11)value=value.slice(0,11)" required autocomplete="off" class="layui-input ">
-                    </div>
-                </div>
-
-                <div class="layui-form-item" >
-                    <label class="layui-form-label">入住时间</label>
-                    <div class="layui-input-block" >
-                        <input type="text" id="EnterTime" required  autocomplete="off" class="layui-input">
-                    </div>
-                </div>
+            <form class="layui-form" >
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">房间号</label>
                     <div class="layui-input-block">
-                        <input type="text" id="suiteNum" oninput="Num()" required autocomplete="off" class="layui-input layui-input-inline">
+                        <input type="text" id="suiteNum" required autocomplete="off" oninput="checkNum()"  class="layui-input layui-input-inline">
                     </div>
                 </div>
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">房间价格</label>
                     <div class="layui-input-block">
-                        <input type="text" id="suitePrice" required autocomplete="off" class="layui-input layui-input-inline">
+                        <input type="text" id="suitePrice" required autocomplete="off" class="layui-input layui-input-inline layui-disabled">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">结单价格</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="checkPrice" required autocomplete="off" class="layui-input layui-input-inline layui-disabled">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">房间类型</label>
                     <div class="layui-input-block">
-                        <select id="suiteType" class="layui-input" autocomplete="off"   required >
-                            <option value=""></option>
-                            <option value="豪华大床房">豪华大床房</option>
-                            <option value="高级大床房">高级大床房</option>
-                            <option value="普通大床房">普通大床房</option>
-                            <option value="豪华套房">豪华套房</option>
-                            <option value="标准套房">标准套房</option>
-                            <option value="高级三人间">高级三人间</option>
-                            <option value="普通三人间">普通三人间</option>
-                            <option value="豪华双床房">豪华双床房</option>
-                            <option value="高级双床房">高级双床房</option>
-                            <option value="普通双床房">普通双床房</option>
-                            <option value="豪华圆床房">豪华圆床房</option>
-                            <option value="豪华水床房">豪华水床房</option>
-                            <option value="高级电脑房">高级电脑房</option>
-                            <option value="大床钟点房（四小时）">大床钟点房（四小时）</option>
-                            <option value="双床终点房（四小时）">双床终点房（四小时）</option>
-                            <option value="大床钟点房（三小时）">大床钟点房（三小时）</option>
-                        </select>
+                        <input type="text" id="suiteType" required  autocomplete="off" class="layui-input layui-disabled">
                     </div>
                 </div>
 
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">备注</label>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入备注"  id = "remark"  class="layui-textarea"></textarea>
+                        <input type="text" id="name" required  autocomplete="off" class="layui-input layui-input-inline layui-disabled" >
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="sex" required  autocomplete="off" class="layui-input layui-disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">身份证号</label>
+                    <div class="layui-input-block">
+                        <input type="number" id="card" oninput="if(value.length>18)value=value.slice(0,18)" required  value="${o.card}" autocomplete="off" class="layui-input layui-disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手机号</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="phone" oninput="if(value.length>11)value=value.slice(0,11)" required autocomplete="off" class="layui-input layui-disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" >
+                    <label class="layui-form-label">入住时间</label>
+                    <div class="layui-input-block" >
+                        <input type="text" id="EnterTime" required  autocomplete="off" class="layui-input layui-disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" >
+                    <label class="layui-form-label">退房时间</label>
+                    <div class="layui-input-block" >
+                        <input type="text" id="ExitTime" required  autocomplete="off" class="layui-input layui-disabled">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <input type="button" class="layui-btn layui-layer-btn0" value="确认添加" />
+                        <input type="button" class="layui-btn layui-layer-btn0" value="确认退房" />
                     </div>
                 </div>
             </form>
         </div>
+
     </div>
 
 </div>
-<script type="text/html" id="barDemo">
-    <a class="layui-btn  layui-btn-xs" lay-event="del">编辑</a>
-</script>
 <script src="${pageContext.request.contextPath}/static/common/jquery-3.6.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/common/layui/layui.js"></script>
 <script>
+    var checkprice;
+    var id;
     //JS
-    layui.use(['element', 'layer', 'util'], function(){
+    layui.use(['upload','element', 'layer', 'util'], function(){
         var element = layui.element
+            ,upload = layui.upload
             ,layer = layui.layer
             ,util = layui.util
             ,$ = layui.$;
@@ -225,78 +209,71 @@
                 });
             }
         });
-
     });
 
-    $(".layui-layer-btn0").on("click",function () {
-        add()
-    });
-
-    function add(){
-        if(document.getElementById("card").value != null && document.getElementById("suiteNum").value != null){
-        var json = {
-            "name": document.getElementById("name").value,
-            "sex":document.getElementById("sex").value,
-            "card":document.getElementById("card").value,
-            "phone":document.getElementById("phone").value,
-            "enterTime":document.getElementById("EnterTime").value,
-            "suitePrice":document.getElementById("suitePrice").value,
-            "billingAdmin":"${cookie.name.value}",
-            "state":"已入住",
-            "suiteType":document.getElementById("suiteType").value,
-            "suiteNum":document.getElementById("suiteNum").value,
-            "remark":document.getElementById("remark").value
-        }
-        var jsonDate = JSON.stringify(json)
-        console.log(jsonDate)
-        $.ajax({
-            type : 'POST',
-            data : jsonDate,
-            dataType : 'json',
-            contentType: 'application/json;charset=UTF-8',
-            url :"${pageContext.request.contextPath}/Order/add",
-            success: function(data){
-                if(data == "200"){
-                    clear()
-                    layer.msg('入住成功');
-                }else {
-                    layer.msg('入住失败');
-                }
-            }
-
+        $(".layui-layer-btn0").on("click",function () {
+            check()
         });
-        }else{
-            layer.msg('不能为空');
-        }
-    }
-    function clear(){
-        $("#name").val(" ");
-        $("#sex").val(" ");
-        $("#card").val(" ");
-        $("#phone").val(" ");
-        $("#EnterTime").val(" ");
-        $("#suitePrice").val(" ");
-        $("#Type").val(" ");
-        $("#suiteNum").val(" ");
-        $("#remark").val(" ");
-    }
 
-    function Num(){
-        if(document.getElementById("suiteNum").value != null){
+        function check(){
+            var json = {
+                "id" : id,
+                "suiteNum": document.getElementById("suiteNum").value,
+                "checkPrice":document.getElementById("checkPrice").value,
+                "checkAdmin":${cookie.name.value},
+                "exitTime" : document.getElementById("EnterTime").value,
+            }
+            var jsonDate = JSON.stringify(json)
+            console.log(jsonDate)
+            $.ajax({
+                type : 'POST',
+                data : jsonDate,
+                dataType : 'json',
+                contentType: 'application/json;charset=UTF-8',
+                url :"${pageContext.request.contextPath}/Order/Finish",
+                success: function(data){
+                    if(data == "200"){
+                        clear()
+                        layer.msg('操作成功');
+                    }else {
+                        layer.msg('操作失败');
+                    }
+                }
+
+            });
+        }
+        function clear(){
+            $("#suitePrice").val(" ");
+            $("#suiteType").val(" ");
+            $("#roomNum").val(" ");
+            $("#sex").val(" ");
+            $("#name").val(" ");
+            $("#card").val(" ");
+            $("#phone").val(" ");
+            $("#EnterTime").val("");
+            $("#checkPrice ").val("");
+        }
+
+        function checkNum(){
             var num = String(document.getElementById("suiteNum").value)
             $.ajax({
-                url :"${pageContext.request.contextPath}/suite/num?num="+num,
+                url :"${pageContext.request.contextPath}/Order/checkNum?num="+num,
                 success: function(data){
-                    $("#suitePrice").val(data.price);
-                    $("#suiteType").val(data.stype);
+                    console.log(data);
+                    $("#suitePrice").val(data.suitePrice);
+                    $("#suiteType").val(data.suiteType);
+                    $("#name").val(data.name);
+                    $("#sex").val(data.sex);
+                    $("#phone").val(data.phone);
+                    $("#card").val(data.card);
+                    $("#EnterTime").val(data.enterTime);
+                    $("#checkPrice ").val(data.suitePrice );
+                    id = data.id;
                 }
             });
-        }else{
-            layer.msg('房间号不能为空');
         }
-
-    }
 
 </script>
 </body>
 </html>
+

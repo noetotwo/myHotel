@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="#"/>
@@ -19,15 +20,15 @@
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-block">
-            <input type="text" name="Name" required   value="${o.name}" autocomplete="off" class="layui-input" >
+            <input type="text" id="Name" required   value="${o.name}" autocomplete="off" class="layui-input" >
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">性别</label>
         <div class="layui-input-block">
-            <select name="Sex" class="layui-input" autocomplete="off"  required >
-                <option value="${o.sex}"></option>
+            <select id="Sex" class="layui-input" autocomplete="off"  required >
+                <option value="${o.sex}">${o.sex}</option>
                 <option value="男">男</option>
                 <option value="女">女</option>
             </select>
@@ -37,14 +38,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">身份证号</label>
         <div class="layui-input-block">
-            <input type="number" name="Card" oninput="if(value.length>18)value=value.slice(0,18)" required  value="${o.card}" autocomplete="off" class="layui-input">
+            <input type="number" id="Card" oninput="if(value.length>18)value=value.slice(0,18)" required  value="${o.card}" autocomplete="off" class="layui-input lay-size=“18” ">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">手机号</label>
         <div class="layui-input-block">
-            <input type="text" name="Phone" required  value="${o.phone}" autocomplete="off" class="layui-input">
+            <input type="text" id="Phone" required  value="${o.phone}" autocomplete="off" class="layui-input lay-size=“11”">
         </div>
     </div>
 
@@ -58,8 +59,8 @@
     <div class="layui-form-item">
         <label class="layui-form-label">房间类型</label>
         <div class="layui-input-block">
-            <select name="S_Type" class="layui-input" autocomplete="off"   required >
-                <option value=""></option>
+            <select id="Type" class="layui-input" autocomplete="off"   required >
+                <option value="${o.suiteType}">${o.suiteType}</option>
                 <option value="豪华大床房">豪华大床房</option>
                 <option value="高级大床房">高级大床房</option>
                 <option value="普通大床房">普通大床房</option>
@@ -84,46 +85,75 @@
     <div class="layui-form-item">
         <label class="layui-form-label">房间号</label>
         <div class="layui-input-block">
-            <input type="text" name="Num" required  value="${o.suiteNum}"  autocomplete="off" class="layui-input">
+            <input type="text" id="Num" required  value="${o.suiteNum}"  autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea placeholder="${o.remark}"  id = "remark"  class="layui-textarea"></textarea>
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <input type="submit" class="layui-btn layui-layer-btn0" value="确认修改" />
+            <input type="button" class="layui-btn layui-layer-btn0" value="确认修改" />
             <input type="button" class="layui-btn layui-btn-danger layui-layer-btn1"  value="取消修改"/>
         </div>
     </div>
 </form>
 <script>
-    layui.use('form', function(){
-        var form = layui.form;
-        //各种基于事件的操作，下面会有进一步介绍
-    });
-
     var index = parent.layer.getFrameIndex(window.name);
 
     $(".layui-layer-btn1").on("click",function () {
         endcode();
-        parent.layer.close(index);
     });
     $(".layui-layer-btn0").on("click",function () {
-        endcode();
-        /*parent.$("#coverone").prop("src",base64url);	//修改元素属性
-        parent.$("#input").val(base64url);				//表单回填
-        parent.layui.table.reload('tk-info-list');	*/	//表格刷新
-        parent.layer.close(index);						//关闭弹窗
+        ask()
     });
 
     function endcode(){
         $.ajax({
             url :"${pageContext.request.contextPath}/Order/EndUpdate?id="+String(${o.id}),
             success: function(data){
-                console.log(data)
+                if(data == "200"){
+                    parent.res();
+                    parent.endUpdate();
+                }else {
+                    layer.msg('服务器异常');
+                }
             }
         });
-        console.log(${o.code});
-        console.log("结束")
+        parent.layer.close(index);//关闭弹窗
+    }
+
+    function ask(){
+        var json = {
+            "id":${o.id},
+            "name": document.getElementById("Name").value,
+            "sex":document.getElementById("Sex").value,
+            "card":document.getElementById("Card").value,
+            "phone":document.getElementById("Phone").value,
+            "suiteType":document.getElementById("Type").value,
+            "suiteNum":document.getElementById("Num").value,
+            "remark":document.getElementById("remark").value
+        }
+        var jsonDate = JSON.stringify(json)
+        console.log(jsonDate)
+        $.ajax({
+            type : 'POST',
+            data : jsonDate,
+            dataType : 'json',
+            contentType: 'application/json;charset=UTF-8',
+            url :"${pageContext.request.contextPath}/Order/submit",
+            success: function(data){
+                if(data == "200"){
+                    endcode();
+                }
+            }
+
+        });
     }
 </script>
 </body>

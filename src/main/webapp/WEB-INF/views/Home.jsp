@@ -53,13 +53,14 @@
                         <dd><a href="${pageContext.request.contextPath}/Order/addOrder">住户入住</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/Order/list">住户列表</a></dd>
                         <dd><a href="javascript:;">住户预约</a></dd>
-                        <dd><a href="">住户退房</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/Order/check">住户退房</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">房间管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">房间列表</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/suite/addSuite">添加房间</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/suite/list">房间列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">

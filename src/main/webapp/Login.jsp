@@ -17,7 +17,6 @@
             }
             //将js对象转化json
             var jsonDate = JSON.stringify(data)
-            alert(jsonDate)
             //使用JQuery向服务端发送post请求
             $.ajax({
                 url : "${pageContext.request.contextPath}/xian/Login",

@@ -37,10 +37,23 @@ public interface SuiteMapper {
     Suite querySuiteById(int  id);
 
     /**
+     * 查询房间对象
+     * @param sType 要查询的房间对象的类型
+     * @return 返回要查询的房间对象
+     */
+    ArrayList<Suite> querySuiteByType(String  sType);
+
+    /**
      * 查询所有的房间对象
      * @return 返回房间对象的列表
      */
     ArrayList<Suite> queryAllSuite();
+
+    /**
+     * 查询空房的房间对象
+     * @return 返回房间对象的列表
+     */
+    ArrayList<Suite> queryNullSuite();
 
     /**
      * 查询房号为num的房间对象
@@ -56,4 +69,6 @@ public interface SuiteMapper {
      * @return 返回sql影响的行数
      */
     int updateState(@Param("num") int num, @Param("state") String state);
+
+    Suite isNull(int num);
 }

@@ -16,10 +16,12 @@ public interface OrderMapper {
 
     List<Order> getOrderByCard(String card);
 
-    List<Order> getOrderBySuiteNum(String num);
+    Order getOrderBySuiteNum(int num);
 
     List<Order> getTimeInterval(String start,String end);
 
     int UpdateOrder(Order order);
+
+    int Finish(Order order);
 
 }

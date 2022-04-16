@@ -16,7 +16,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean addOrder(Order order) {
-        if(orderMapper.addOrder(order) > 1){
+        if(orderMapper.addOrder(order) > 0){
             return true;
         }
         return false;
@@ -38,13 +38,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrderBySuiteNum(String num) {
+    public Order getOrderBySuiteNum(int num) {
         return orderMapper.getOrderBySuiteNum(num);
     }
 
     @Override
     public List<Order> getTimeInterval(String start, String end) {
         return null;
+    }
+
+    @Override
+    public boolean Finish(Order order) {
+        if(orderMapper.Finish(order) > 0){
+            return true;
+        }
+        return false;
     }
 
 

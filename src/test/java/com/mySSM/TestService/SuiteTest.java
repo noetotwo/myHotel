@@ -20,7 +20,7 @@ public class SuiteTest {
 
     @Test
     public void addSuite(){
-        if(suiteService.addSuite(new User("8","1",8),new Suite(888,"速8大床房",888,"未入住","",""))){
+        if(suiteService.addSuite(new Suite(888,"速8大床房",888,"未入住","",""))){
             System.out.println("添加成功");
         }else{
             System.out.println("权限不够");
@@ -38,7 +38,7 @@ public class SuiteTest {
 
     @Test
     public void updateSuite(){
-        if(suiteService.updateSuiteById(new User("8","1",8),new Suite(13,888,"速8大床房",998,"未入住","",""))){
+        if(suiteService.updateSuiteById(new Suite(13,888,"速8大床房",998,"未入住","",""))){
             System.out.println("更新成功");
         }else{
             System.out.println("权限不够");
@@ -47,7 +47,7 @@ public class SuiteTest {
 
     @Test
     public void IDSelect(){
-        if (suiteService.querySuiteById(13) != null){
+        if (suiteService.querySuiteById(58) != null){
             System.out.println("查询成功");
         }else{
             System.out.println("用户不存在");
@@ -74,7 +74,16 @@ public class SuiteTest {
 
     @Test
     public void State(){
-        if(suiteService.updateState(888,"已入住")){
+        if(suiteService.updateState(208,"已入住")){
+            System.out.println("更新成功");
+        }else{
+            System.out.println("更新失败");
+        }
+    }
+
+    @Test
+    public void isNull(){
+        if(suiteService.isNull(208)){
             System.out.println("更新成功");
         }else{
             System.out.println("更新失败");

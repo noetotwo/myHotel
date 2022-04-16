@@ -44,6 +44,7 @@ public class LoginController {
 
             //将对象cookie转给jsp
             Cookie k1 = new Cookie("name",user.getName());
+            k1.setPath("/");
             k1.setSecure(true);
             response.addCookie(k1);
         } else {
