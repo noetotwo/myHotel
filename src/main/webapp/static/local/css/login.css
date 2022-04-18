@@ -61,5 +61,5 @@ input:focus{ outline: none; }
 .brief-box ul li:last-child{padding-bottom:0;}
 .brief-box ul li img{width:20px;}
 
-.body-bg{background-image:url('../img/b.png');background-repeat: no-repeat;
+.body-bg{background-image:url('../img/login.jpg');background-repeat: no-repeat;
     background-position:center center;background-size:100% auto;background-color:#E9E9EB;}

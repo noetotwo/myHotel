@@ -23,6 +23,9 @@ public class LoginInterceptor implements HandlerInterceptor {
             System.out.println("h2");
             return true;
         }
+        if (url.indexOf("/error") >= 0) {
+            return true;
+        }
         if (url.indexOf("/again") >= 0) {
             //注销会话
             session.invalidate();

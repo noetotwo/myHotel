@@ -27,7 +27,7 @@
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo layui-hide-xs layui-bg-black">layout demo</div>
+        <div class="layui-logo layui-hide-xs layui-bg-black">贤哲</div>
         <!-- 头部区域（可配合layui 已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <!-- 移动端显示 -->
@@ -41,7 +41,7 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item layui-hide layui-show-md-inline-block">
                 <a href="javascript:;" text>
-                    <img src="${pageContext.request.contextPath}/static/local/img/a.png" class="layui-nav-img">
+                    <img src="${pageContext.request.contextPath}/static/local/img/头像.png" class="layui-nav-img">
                     ${cookie.name.value}
                 </a>
                 <dl class="layui-nav-child">
@@ -82,7 +82,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">会员管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">会员列表</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/Client/list">会员列表</a></dd>
                         <dd><a href="javascript:;">会员注销</a></dd>
                     </dl>
                 </li>

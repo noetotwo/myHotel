@@ -5,8 +5,8 @@
 <mapper namespace="com.mySSM.dao.ClientMapper">
     <!--resultType错误会导致org.springframework.beans.factory.UnsatisfiedDependencyException -->
     <insert id="addClient" parameterType="com.mySSM.pojo.Client">
-        insert into client(name,sex,card,phone,VIP_type,email,RegisterTime)
-        values (#{Name},#{Sex},#{Card},#{Phone},#{VIP_Type},#{Email},#{Register_Time});
+        insert into client(name,sex,card,phone,vipType,email,RegisterTime)
+        values (#{Name},#{Sex},#{Card},#{Phone},#{VIPType},#{Email},#{RegisterTime});
     </insert>
 
     <select id = "queryClientById" parameterType="_int" resultType="com.mySSM.pojo.Client">
@@ -52,7 +52,7 @@
 
     <update id="setVIP">
         update client
-        set vip_type = #{vip}
+        set vipType = #{vip}
         where card = #{card};
     </update>
 
@@ -61,7 +61,7 @@
     </select>
 
     <insert id = "inSitu" parameterType="com.mySSM.pojo.Client">
-        insert into client(id,name,sex,card,phone,VIP_type,email,RegisterTime,integral)
-        values (#{id},#{Name},#{Sex},#{Card},#{Phone},#{VIP_Type},#{Email},#{Register_Time},#{integral});
+        insert into client(id,name,sex,card,phone,vipType,email,RegisterTime,integral)
+        values (#{id},#{Name},#{Sex},#{Card},#{Phone},#{VIPType},#{Email},#{RegisterTime},#{integral});
     </insert>
 </mapper>

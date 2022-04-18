@@ -5,7 +5,7 @@
 <configuration>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
-        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <!--<setting name="logImpl" value="STDOUT_LOGGING" />-->
         <!--显示的开启全局缓存-->
         <!--<setting name="cacheEnabled" value="true"/>-->
     </settings>
@@ -13,6 +13,5 @@
     <typeAliases>
         <!-- 别名 -->
         <package name="com.mySSM.pojo"/>
-        <!-- <typeAlias type="com.ssm.pojo.Student" alias="Student"/>-->
     </typeAliases>
 </configuration>

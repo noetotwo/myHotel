@@ -24,7 +24,7 @@ public class Client {
     /**
      * 会员级别
      */
-    private String VIP_Type;
+    private String VIPType;
     /**
      * 电子邮箱
      */
@@ -32,7 +32,7 @@ public class Client {
     /**
      *客户注册时间
      */
-    private String Register_Time;
+    private String RegisterTime;
     /**
      *客户积分
      */
@@ -54,9 +54,9 @@ public class Client {
         Sex = sex;
         Card = card;
         Phone = phone;
-        this.VIP_Type = VIP_Type;
+        this.VIPType = VIP_Type;
         Email = email;
-        Register_Time = register_Time;
+        RegisterTime = register_Time;
     }
 
     public Client(int id, String name, String sex, String card, String phone, String VIP_Type, String email, String register_Time, int integral) {
@@ -65,9 +65,9 @@ public class Client {
         Sex = sex;
         Card = card;
         Phone = phone;
-        this.VIP_Type = VIP_Type;
+        this.VIPType = VIP_Type;
         Email = email;
-        Register_Time = register_Time;
+        RegisterTime = register_Time;
         this.integral = integral;
     }
 
@@ -111,12 +111,12 @@ public class Client {
         Phone = phone;
     }
 
-    public String getVIP_Type() {
-        return VIP_Type;
+    public String getVIPType() {
+        return VIPType;
     }
 
-    public void setVIP_Type(String VIP_Type) {
-        this.VIP_Type = VIP_Type;
+    public void setVIPType(String VIPType) {
+        this.VIPType = VIPType;
     }
 
     public String getEmail() {
@@ -127,12 +127,12 @@ public class Client {
         Email = email;
     }
 
-    public String getRegister_Time() {
-        return Register_Time;
+    public String getRegisterTime() {
+        return RegisterTime;
     }
 
-    public void setRegister_Time(String register_Time) {
-        Register_Time = register_Time;
+    public void setRegisterTime(String registerTime) {
+        RegisterTime = registerTime;
     }
 
     public int getIntegral() {
@@ -151,9 +151,9 @@ public class Client {
                 ", Sex='" + Sex + '\'' +
                 ", Card='" + Card + '\'' +
                 ", Phone='" + Phone + '\'' +
-                ", VIP_Type='" + VIP_Type + '\'' +
+                ", VIP_Type='" + VIPType + '\'' +
                 ", Email='" + Email + '\'' +
-                ", Register_Time='" + Register_Time + '\'' +
+                ", Register_Time='" + RegisterTime + '\'' +
                 ", integral=" + integral +
                 '}';
     }

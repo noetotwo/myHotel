@@ -29,7 +29,7 @@ public class ClientTemp {
     /**
      * 会员级别
      */
-    private String VIP_Type;
+    private String VIPType;
     /**
      * 电子邮箱
      */
@@ -57,7 +57,7 @@ public class ClientTemp {
         Sex = sex;
         Card = card;
         Phone = phone;
-        this.VIP_Type = VIP_Type;
+        this.VIPType = VIP_Type;
         Email = email;
         RegisterTime = registerTime;
         this.integral = integral;
@@ -65,7 +65,7 @@ public class ClientTemp {
     }
 
     public Client getClient(){
-        return new Client(CId,Name,Sex,Card,Phone,VIP_Type,Email,RegisterTime,integral);
+        return new Client(CId,Name,Sex,Card,Phone, VIPType,Email,RegisterTime,integral);
     }
 
     public int getId() {
@@ -116,12 +116,12 @@ public class ClientTemp {
         Phone = phone;
     }
 
-    public String getVIP_Type() {
-        return VIP_Type;
+    public String getVIPType() {
+        return VIPType;
     }
 
-    public void setVIP_Type(String VIP_Type) {
-        this.VIP_Type = VIP_Type;
+    public void setVIPType(String VIPType) {
+        this.VIPType = VIPType;
     }
 
     public String getEmail() {
@@ -165,7 +165,7 @@ public class ClientTemp {
                 ", Sex='" + Sex + '\'' +
                 ", Card='" + Card + '\'' +
                 ", Phone='" + Phone + '\'' +
-                ", VIP_Type='" + VIP_Type + '\'' +
+                ", VIP_Type='" + VIPType + '\'' +
                 ", Email='" + Email + '\'' +
                 ", RegisterTime='" + RegisterTime + '\'' +
                 ", integral=" + integral +
