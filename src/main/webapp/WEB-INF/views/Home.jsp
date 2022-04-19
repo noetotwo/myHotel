@@ -8,6 +8,7 @@
     <title>贤哲管理系统</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/common/layui/css/layui.css"/>
 </head>
+
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
@@ -78,7 +79,6 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域。记得修改 layui.css 和 js 的路径</div>
 
     </div>
 

@@ -8,5 +8,6 @@ public interface LoginService {
      * @param pwd login用户密码
      * @return 登录成功返回true 否之返回false
      */
-    public boolean Login(String name,String pwd);
+    boolean Login(String name,String pwd);
+
 }

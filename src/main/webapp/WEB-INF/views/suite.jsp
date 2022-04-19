@@ -121,7 +121,6 @@
             "introduce":document.getElementById("introduce").value,
         }
         var jsonDate = JSON.stringify(json)
-        console.log(jsonDate)
         $.ajax({
             type : 'POST',
             data : jsonDate,

@@ -36,3 +36,4 @@ public interface AdminService {
      */
     List<User> SelectAdmin(User user);
 }
+

@@ -21,6 +21,7 @@ public class SuiteMonitor extends Thread{
 
     public void run(){
         while (true) {
+
             for (Integer id : suiteCache.keySet()) {
                 if(DateUtil.isTimeOut(suiteCache.get(id).getDate()) >= 2){
                     suiteCache.remove(id);

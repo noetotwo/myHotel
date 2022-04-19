@@ -53,22 +53,39 @@ public class LoginController {
         return map;
     }
 
+    /**
+     * 页面Home的请求处理
+     * @return
+     */
     @RequestMapping("/Home")
     public String getHomePage(){
         return "Home";
     }
 
+    /**
+     * 登录失败后页面error的请求处理
+     * @return
+     */
     @RequestMapping("/error")
     public String getErrorPage(){
         return "error";
     }
 
+    /**
+     * 结束登录的请求处理，并把会话Session注销
+     * @param session
+     * @return
+     */
     @RequestMapping("/EndLogin")
     public String EndLogin(HttpSession session){
         session.invalidate();
         return "End";
     }
 
+    /**
+     * 重新登录的请求处理
+     * 在拦截器LoginInterceptor重定向了页面，并把会话Session注销
+     */
     @RequestMapping("/again")
     public void again(){}
 }

@@ -17,3 +17,4 @@ public interface LoginMapper {
     Map Login(@Param("name") String name, @Param("pwd")String pwd);
 
 }
+

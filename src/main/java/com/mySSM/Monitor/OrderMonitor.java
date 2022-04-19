@@ -22,6 +22,7 @@ public class OrderMonitor extends Thread{
 
     public void run(){
         while (true) {
+
             for (Integer id : orderCache.keySet()) {
                 if(DateUtil.isTimeOut(orderCache.get(id).getDate()) >= 2){
                     orderCache.remove(id);

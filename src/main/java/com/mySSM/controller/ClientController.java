@@ -16,15 +16,24 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
+    /**
+     * 所有客户数据接口
+     * @return
+     */
     @RequestMapping("/all")
     @ResponseBody
     public List<Client> getAll(){
         return clientService.SelectAll();
     }
 
+    /**
+     * 客户全部数据页面的请求处理
+     * @return
+     */
     @RequestMapping("/list")
     public String getList(){
         return "ClientList";
     }
 
 }
+

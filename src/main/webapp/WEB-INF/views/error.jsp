@@ -13,6 +13,7 @@
     </style>
 
 </head>
+
 <body id="error-page">
 <div class="row">
     <div class="panel-body">

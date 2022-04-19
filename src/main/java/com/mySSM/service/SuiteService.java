@@ -70,5 +70,10 @@ public interface SuiteService {
      */
     boolean updateState( int num, String state);
 
+    /**
+     * 判断房间是否为空
+     * @param num 房间号
+     * @return
+     */
     boolean isNull(int num);
 }

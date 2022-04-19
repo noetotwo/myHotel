@@ -16,7 +16,6 @@
   </context-param>
   <!--log4j配置文件结束-->
 
-
   <!-- 配置spring -->
   <context-param>
     <param-name>contextConfigLocation</param-name>

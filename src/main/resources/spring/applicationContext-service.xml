@@ -11,3 +11,4 @@
 	<!-- 配置Service扫描 -->
 	<context:component-scan base-package="com.mySSM.service" />
 </beans>
+

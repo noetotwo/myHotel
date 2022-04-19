@@ -37,7 +37,6 @@
 </head>
 
 <body class="body-bg">
-
 <div class="container">
     <div class="header">
         <div class="img-cont ta-center">
@@ -57,8 +56,8 @@
             <div class="login-box">
                 <div class="frm-cont">
                     <h3 class="title">贤哲国际酒店后台管理系统</h3>
-                    <h4>所属地区：<span class="color-tip">中华神州大陆</span></h4>
-                    <h4>时区编码：<span class="color-tip">604</span></h4>
+                    <h4>所属地区：<span class="color-tip">中国广州</span></h4>
+                    <h4>地区编码：<span class="color-tip">604</span></h4>
                     <div class="frm-box">
                         <form>
                             <input type="text"  id="username" placeholder="请输入账号" class="fultxt"

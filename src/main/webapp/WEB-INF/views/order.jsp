@@ -140,7 +140,6 @@
             "remark":document.getElementById("remark").value
         }
         var jsonDate = JSON.stringify(json)
-        console.log(jsonDate)
         $.ajax({
             type : 'POST',
             data : jsonDate,

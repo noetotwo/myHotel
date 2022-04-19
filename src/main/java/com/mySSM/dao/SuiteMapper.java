@@ -70,5 +70,10 @@ public interface SuiteMapper {
      */
     int updateState(@Param("num") int num, @Param("state") String state);
 
+    /**
+     * 判断房间是否为空
+     * @param num 房间号
+     * @return
+     */
     Suite isNull(int num);
 }

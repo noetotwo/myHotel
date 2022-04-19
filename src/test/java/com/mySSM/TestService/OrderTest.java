@@ -18,7 +18,7 @@ public class OrderTest {
 
     @Test
     public void addTest(){
-        if(orderService.addOrder(new Order("吴家聪","男","123456789123456789","12345678912" ,"888",DateUtil.getNowDate(), "普通大床房","1", 100,"入住中",""))) {
+        if(orderService.addOrder(new Order("葱","男","123456789123456789","12345678912" ,"888",DateUtil.getNowDate(), "普通大床房","1", 100,"入住中",""))) {
             System.out.println("添加客户成功");
         }else {
             System.out.println("添加客户失败");

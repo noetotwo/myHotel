@@ -80,7 +80,6 @@ public class SuiteTest {
             System.out.println("更新失败");
         }
     }
-
     @Test
     public void isNull(){
         if(suiteService.isNull(208)){

@@ -19,7 +19,7 @@
 <body id="error-page">
 <div class="row">
     <div class="panel-body">
-        <h1>:(</h1><h4 class="success">线程在使用中！</h4>                <h4 class="detail"></h4>
+        <h1>:)</h1><h4 class="success">线程在使用中！</h4>                <h4 class="detail"></h4>
         <h4 >
             <button class="layui-btn" onclick="end()">返回</button>
         </h4>
@@ -30,7 +30,7 @@
 <script>
     var index = parent.layer.getFrameIndex(window.name);
     function endcode(){
-        console.log("结束")
+
     }
     function end(){
         parent.layer.close(index);//关闭弹窗

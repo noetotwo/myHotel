@@ -224,7 +224,6 @@
                 "exitTime" : document.getElementById("EnterTime").value,
             }
             var jsonDate = JSON.stringify(json)
-            console.log(jsonDate)
             $.ajax({
                 type : 'POST',
                 data : jsonDate,
@@ -259,7 +258,6 @@
             $.ajax({
                 url :"${pageContext.request.contextPath}/Order/checkNum?num="+num,
                 success: function(data){
-                    console.log(data);
                     $("#suitePrice").val(data.suitePrice);
                     $("#suiteType").val(data.suiteType);
                     $("#name").val(data.name);

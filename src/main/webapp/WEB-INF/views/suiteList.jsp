@@ -161,7 +161,6 @@
         $.ajax({
             url :"${pageContext.request.contextPath}/suite/all",
             success: function(data){
-                console.log(data)
                 renderAddrTable(data)
             }
         });

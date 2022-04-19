@@ -10,6 +10,7 @@
     <title>贤哲管理系统</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/common/layui/css/layui.css"/>
 </head>
+
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">

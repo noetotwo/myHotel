@@ -41,3 +41,4 @@ public interface AdminMapper {
      */
     List<User> SelectAdmin();
 }
+
